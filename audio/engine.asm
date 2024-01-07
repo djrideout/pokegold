@@ -2320,6 +2320,7 @@ SetLRTracks:
 _PlayMusic::
 ; load music
 	call MusicOff
+	ld de, MUSIC_NONE ; always play no music when calling _PlayMusic
 	ld hl, wMusicID
 	ld [hl], e ; song number
 	inc hl
