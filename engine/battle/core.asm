@@ -134,6 +134,7 @@ WildFled_EnemyFled_LinkBattleCanceled:
 .print_text
 	call StdBattleTextbox
 	call StopDangerSound
+; BUG: SFX_RUN does not play correctly when a wild Pokémon flees from battle (see docs/bugs_and_glitches.md)
 	ld de, SFX_RUN
 	call PlaySFX
 	call SetPlayerTurn
@@ -6201,7 +6202,7 @@ LoadEnemyMon:
 
 	ld hl, wEnemyMonStats
 	ld de, wEnemyStats
-	ld bc, NUM_EXP_STATS * 2
+	ld bc, NUM_BATTLE_STATS * 2
 	call CopyBytes
 
 ; BUG: PRZ and BRN stat debuffs sometimes don't apply to switched mons (see docs/bugs_and_glitches.md)
